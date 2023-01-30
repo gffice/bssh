@@ -38,7 +38,8 @@ jobs:
           git config --global user.name "GitHub Actions"
           cd ~/
           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-          sudo curl https://storage.googleapis.com/git-repo-downloads/repo >> /usr/bin/repo
+          sudo curl https://storage.googleapis.com/git-repo-downloads/repo >> ./repo
+          sudo cp repo /usr/bin/repo
           sudo chmod 777 /usr/bin/repo
           mkdir chromiumos
           cd chromiumos
