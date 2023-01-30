@@ -39,11 +39,11 @@ jobs:
           cd ~/
           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
           sudo curl https://storage.googleapis.com/git-repo-downloads/repo >> /usr/bin/repo
-          chmod 777 /usr/bin/repo
+          sudo chmod 777 /usr/bin/repo
           mkdir chromiumos
           cd chromiumos
-          repo init -u https://chromium.googlesource.com/chromiumos/manifest.git
-          repo sync
+          sudo repo init -u https://chromium.googlesource.com/chromiumos/manifest.git
+          sudo repo sync
       #- name: Setup tmate session
         #uses: mxschmitt/action-tmate@v2
       - name: Upload home # 上传构建产物，这里我们的源码目录是 src，而实际运行的代码是构建后的 bin 目录
