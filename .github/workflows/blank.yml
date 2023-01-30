@@ -34,11 +34,20 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v2
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          cd ~/
+          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+          sudo curl https://storage.googleapis.com/git-repo-downloads/repo >> /usr/bin/repo
+          chmod 777 /usr/bin/repo
+          mkdir chromiumos
+          cd chromiumos
+          repo init -u https://chromium.googlesource.com/chromiumos/manifest.git
+          repo sync
+      #- name: Setup tmate session
+        #uses: mxschmitt/action-tmate@v2
       - name: Upload home # 上传构建产物，这里我们的源码目录是 src，而实际运行的代码是构建后的 bin 目录
         uses: actions/upload-artifact@v2
         with:
           name: hoem
-          path: ~/
+          path: ~/chromiumos/
